@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booked Slots</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="booked-container">
+
+<h2 class="title">Booked Slots</h2>
+
+<table class="slot-table">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+
+<td class="cell">{{b[0]}}</td>
+<td class="cell">{{b[1]}}</td>
+<td class="cell">{{b[2]}}</td>
+<td class="cell">{{b[3]}}</td>
+<td class="cell">{{b[4]}}</td>
+
+<td class="cell">
+<span class="status">Booked</span>
+</td>
+
+<td class="cell">
+<a href="/delete/{{b[0]}}">
+<button class="delete-btn">Delete</button>
+</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/" class="back-btn">Back to Booking</a>
+
+</div>
+
+</body>
+</html>

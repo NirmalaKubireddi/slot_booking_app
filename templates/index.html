@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Slot Booking</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Slot Booking</h2>
+<p class="slot-info">
+Available Slots: {{available_slots}}
+</p>
+
+<form method="POST" action="/book" onsubmit="return validateForm()">
+
+<label>Name</label>
+<input type="text" name="name" id="name" required>
+
+<label>Email</label>
+<input type="email" name="email" id="email" required>
+
+<label>Date</label>
+<input type="date" name="date" id="date" required>
+
+<label>Time</label>
+<input type="time" name="time" id="time" required>
+
+
+<button type="submit">Book Slot</button>
+
+</form>
+
+<p id="msg" style="color:red; text-align:center; margin-top:10px;"></p>
+
+<a href="/booked">View Bookings</a>
+
+</div>
+
+<script>
+function validateForm() {
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
+
+if(name === "" || email === "" || date === "" || time === ""){
+
+document.getElementById("msg").innerText =
+"Please fill all fields before booking!";
+return false;
+}
+
+return true;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Admin Dashboard</title>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Admin Dashboard</h1>
+
+<div class="stats">
+
+<div class="card">
+<h2>Total Users</h2>
+<p>{{ total_users }}</p>
+</div>
+
+<div class="card">
+<h2>Total Bookings</h2>
+<p>{{ total_bookings }}</p>
+</div>
+
+</div>
+
+<h2 class="table-title">All Bookings</h2>
+<div class="table-wrapper">
+<table class="slot-table">
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Date</th>
+<th>Time</th>
+<th>Action</th>
+</tr>
+
+{% for b in bookings %}
+
+<tr>
+
+<td>{{ b[0] }}</td>
+<td>{{ b[1] }}</td>
+<td>{{ b[2] }}</td>
+<td>{{ b[3] }}</td>
+<td>{{ b[4] }}</td>
+
+<td>
+<a href="/delete/{{ b[0] }}">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+</table>
+
+</div>
+
+</body>
+</html>
