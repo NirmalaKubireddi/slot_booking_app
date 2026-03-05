@@ -1,14 +1,16 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 import mysql.connector
+import os
 
 app = Flask(__name__)
 app.secret_key = "secret123"
 
+
 conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Nirmala@87905",
-    database="slot_booking"
+    host=os.environ.get("localhost"),       # Your cloud DB host
+    user=os.environ.get("root"),       # Your cloud DB user
+    password=os.environ.get("Nirmala@87905"),  # Your cloud DB password
+    database=os.environ.get("slot_booking")    # Your DB name
 )
 
 cursor = conn.cursor()
