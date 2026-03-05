@@ -7,10 +7,10 @@ app.secret_key = "secret123"
 
 
 conn = mysql.connector.connect(
-    host=os.environ.get("localhost"),       # Your cloud DB host
-    user=os.environ.get("root"),       # Your cloud DB user
-    password=os.environ.get("Nirmala@87905"),  # Your cloud DB password
-    database=os.environ.get("slot_booking")    # Your DB name
+    host=os.environ.get("DB_HOST"),
+    user=os.environ.get("DB_USER"),
+    password=os.environ.get("DB_PASSWORD"),
+    database=os.environ.get("DB_NAME")
 )
 
 cursor = conn.cursor()
